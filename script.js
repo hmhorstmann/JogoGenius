@@ -1,3 +1,6 @@
+var naTela = document.getElementById("comunicar")
+naTela.innerHTML = "Genius"
+
 let order = []
 let clickedOrder = []
 let onMouseOrder = []
@@ -34,6 +37,7 @@ let shuffleOrder = () => {
 
 // acendendo a cor sorteada
 let lightColor = (element, proporcao) => {
+    console.log(element, proporcao)
     proporcao = proporcao * 1000
     setTimeout(() => {
         element.classList.add('selected')
@@ -52,7 +56,21 @@ let checkOrder = () => {
         }
     }
     if(clickedOrder.length == order.length) {
-        alert(`Pontuação: ${score}\nVocê acertou! iniciando próximo nível!!`)
+        // console.log(order.length)
+        // alert(`Pontuação: ${score}\nVocê acertou! iniciando próximo nível!!`)
+        naTela.innerHTML = "Você acertou!"
+        naTela.style.color = "#fff"
+
+
+        setTimeout(() => {
+            naTela.innerHTML = "!"
+            naTela.style.color = "#000"
+        }, 1000)
+        setTimeout(() => {
+            nextLevel()
+            naTela.innerHTML = `Nível: ${score}`
+            naTela.style.color = "#fff"
+        }, 1000)
     }
 }
 
@@ -65,9 +83,12 @@ let click = (color) => {
     
         setTimeout(()=> {
             createColorElement(color).classList.remove('selected')
+        }, 200)
+        setTimeout(() => {
             checkOrder()
-        },200)
+        }, 500)
 }
+
 
 // função que retorna a color
 let createColorElement = (color) => {
@@ -90,6 +111,8 @@ let nextLevel = () => {
 
 //função game over
 let gameOver = () => {
+    naTela.innerHTML = `Você errou... Você fez: ${score} pontos!`
+    naTela.style.color = "#fff"
     setTimeout(() => {
         alert(`Pontuação: ${score}\nClique em OK para iniciar novamente`)
         order = []
@@ -115,5 +138,10 @@ let playGame = () => {
     blue.onclick = () => click(2)
     yellow.onclick = () => click(3)
 
+
+// green.addEventListener('click', click(0))
+// red.addEventListener('click', click(1))
+// blue.addEventListener('click', click(2))
+// yellow.addEventListener('click', click(3))
 
 playGame()
