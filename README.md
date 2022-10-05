@@ -16,3 +16,7 @@ Criando um jogo da memória estilo Genius para o **_Desafio de Projeto - DIO_**.
 
  - Adicionar sons.
  - Permitir que o jogador clique apenas quando for "sua vez".
+ 
+ ### Clique no link abaixo para mais detalhes:
+ 
+ https://codepen.io/hmhorstmann/full/RwxwrLY
